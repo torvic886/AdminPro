@@ -9,15 +9,19 @@ import { PagesComponent } from './pages/pages.component';
 import { ProgressComponent } from './pages/progress/progress.component';
 
 const routes: Routes = [
- {path: '', component: PagesComponent},
- { path: 'dashboard', component: DashboardComponent},
- { path: 'progress', component: ProgressComponent},
- { path: 'grafica1', component: Grafica1Component},
+ { path: '', 
+ component: PagesComponent,
+ children: [
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'progress', component: ProgressComponent},
+  { path: 'grafica1', component: Grafica1Component},
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+]
+},
 
  { path: 'register', component: RegisterComponent},
  { path: 'login', component: LoginComponent},
 
- //{ path: '', redirectTo: '/dashboard', pathMatch: 'full'},
  { path: '**', component: NopagefoundComponent},
 ];
 
